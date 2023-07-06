@@ -18,7 +18,7 @@ def get_link_prediction_args(is_evaluation: bool = False):
                         choices=['JODIE', 'DyRep', 'TGAT', 'TGN', 'CAWN', 'EdgeBank', 'TCL', 'GraphMixer', 'DyGFormer'])
     parser.add_argument('--gpu', type=int, default=0, help='number of gpu to use')
     parser.add_argument('--num_neighbors', type=int, default=20, help='number of neighbors to sample for each node')
-    parser.add_argument('--sample_neighbor_strategy', default='recent', choices=['uniform', 'recent', 'time_interval_aware'], help='how to sample historical neighbors')
+    parser.add_argument('--sample_neighbor_strategy', type=str, default='recent', choices=['uniform', 'recent', 'time_interval_aware'], help='how to sample historical neighbors')
     parser.add_argument('--time_scaling_factor', default=1e-6, type=float, help='the hyperparameter that controls the sampling preference with time interval, '
                         'a large time_scaling_factor tends to sample more on recent links, 0.0 corresponds to uniform sampling, '
                         'it works when sample_neighbor_strategy == time_interval_aware')
@@ -249,7 +249,7 @@ def get_node_classification_args():
                         choices=['JODIE', 'DyRep', 'TGAT', 'TGN', 'CAWN', 'TCL', 'GraphMixer', 'DyGFormer'])
     parser.add_argument('--gpu', type=int, default=0, help='number of gpu to use')
     parser.add_argument('--num_neighbors', type=int, default=20, help='number of neighbors to sample for each node')
-    parser.add_argument('--sample_neighbor_strategy', default='recent',
+    parser.add_argument('--sample_neighbor_strategy', type=str, default='recent',
                         choices=['uniform', 'recent', 'time_interval_aware'], help='how to sample historical neighbors')
     parser.add_argument('--time_scaling_factor', default=1e-6, type=float, help='the hyperparameter that controls the sampling preference with time interval, '
                         'a large time_scaling_factor tends to sample more on recent links, 0.0 corresponds to uniform sampling, '
