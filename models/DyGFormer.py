@@ -227,8 +227,8 @@ class DyGFormer(nn.Module):
 
         # pad the sequences
         # three ndarrays with shape (batch_size, max_seq_length)
-        padded_nodes_neighbor_ids = np.zeros((len(node_ids), max_seq_length)).astype(np.long)
-        padded_nodes_edge_ids = np.zeros((len(node_ids), max_seq_length)).astype(np.long)
+        padded_nodes_neighbor_ids = np.zeros((len(node_ids), max_seq_length)).astype(np.longlong)
+        padded_nodes_edge_ids = np.zeros((len(node_ids), max_seq_length)).astype(np.longlong)
         padded_nodes_neighbor_times = np.zeros((len(node_ids), max_seq_length)).astype(np.float32)
 
         for idx in range(len(node_ids)):

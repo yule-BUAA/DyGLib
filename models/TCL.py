@@ -84,14 +84,14 @@ class TCL(nn.Module):
         # src_neighbor_node_ids, ndarray, shape (batch_size, num_neighbors + 1)
         src_neighbor_node_ids = np.concatenate((src_node_ids[:, np.newaxis], src_neighbor_node_ids), axis=1)
         # src_neighbor_edge_ids, ndarray, shape (batch_size, num_neighbors + 1)
-        src_neighbor_edge_ids = np.concatenate((np.zeros((len(src_node_ids), 1)).astype(np.long), src_neighbor_edge_ids), axis=1)
+        src_neighbor_edge_ids = np.concatenate((np.zeros((len(src_node_ids), 1)).astype(np.longlong), src_neighbor_edge_ids), axis=1)
         # src_neighbor_times, ndarray, shape (batch_size, num_neighbors + 1)
         src_neighbor_times = np.concatenate((node_interact_times[:, np.newaxis], src_neighbor_times), axis=1)
 
         # dst_neighbor_node_ids, ndarray, shape (batch_size, num_neighbors + 1)
         dst_neighbor_node_ids = np.concatenate((dst_node_ids[:, np.newaxis], dst_neighbor_node_ids), axis=1)
         # dst_neighbor_edge_ids, ndarray, shape (batch_size, num_neighbors + 1)
-        dst_neighbor_edge_ids = np.concatenate((np.zeros((len(dst_node_ids), 1)).astype(np.long), dst_neighbor_edge_ids), axis=1)
+        dst_neighbor_edge_ids = np.concatenate((np.zeros((len(dst_node_ids), 1)).astype(np.longlong), dst_neighbor_edge_ids), axis=1)
         # dst_neighbor_times, ndarray, shape (batch_size, num_neighbors + 1)
         dst_neighbor_times = np.concatenate((node_interact_times[:, np.newaxis], dst_neighbor_times), axis=1)
 

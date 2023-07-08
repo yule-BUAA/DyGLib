@@ -4,7 +4,7 @@
 ## Overview
 Dynamic Graph Library (DyGLib) is an open-source toolkit with standard training pipelines, extensible coding interfaces, and comprehensive evaluating strategies, 
 which aims to promote standard, scalable, and reproducible dynamic graph learning research. Diverse benchmark datasets and thorough baselines are involved in DyGLib.
-![](figures/CTDyGLib_procedure.jpg)
+![](figures/DyGLib_procedure.jpg)
 
 
 ## Benchmark Datasets and Preprocessing

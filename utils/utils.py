@@ -157,10 +157,10 @@ class NeighborSampler:
         # All interactions described in the following three matrices are sorted in each row by time
         # each entry in position (i,j) represents the id of the j-th dst node of src node node_ids[i] with an interaction before node_interact_times[i]
         # ndarray, shape (batch_size, num_neighbors)
-        nodes_neighbor_ids = np.zeros((len(node_ids), num_neighbors)).astype(np.long)
+        nodes_neighbor_ids = np.zeros((len(node_ids), num_neighbors)).astype(np.longlong)
         # each entry in position (i,j) represents the id of the edge with src node node_ids[i] and dst node nodes_neighbor_ids[i][j] with an interaction before node_interact_times[i]
         # ndarray, shape (batch_size, num_neighbors)
-        nodes_edge_ids = np.zeros((len(node_ids), num_neighbors)).astype(np.long)
+        nodes_edge_ids = np.zeros((len(node_ids), num_neighbors)).astype(np.longlong)
         # each entry in position (i,j) represents the interaction time between src node node_ids[i] and dst node nodes_neighbor_ids[i][j], before node_interact_times[i]
         # ndarray, shape (batch_size, num_neighbors)
         nodes_neighbor_times = np.zeros((len(node_ids), num_neighbors)).astype(np.float32)
@@ -444,7 +444,7 @@ class NegativeEdgeSampler(object):
 
         # Note that if one of the input of np.concatenate is empty, the output will be composed of floats.
         # Hence, convert the type to long to guarantee valid index
-        return negative_src_node_ids.astype(np.long), negative_dst_node_ids.astype(np.long)
+        return negative_src_node_ids.astype(np.longlong), negative_dst_node_ids.astype(np.longlong)
 
     def inductive_sample(self, size: int, batch_src_node_ids: np.ndarray, batch_dst_node_ids: np.ndarray,
                          current_batch_start_time: float, current_batch_end_time: float):
@@ -484,7 +484,7 @@ class NegativeEdgeSampler(object):
 
         # Note that if one of the input of np.concatenate is empty, the output will be composed of floats.
         # Hence, convert the type to long to guarantee valid index
-        return negative_src_node_ids.astype(np.long), negative_dst_node_ids.astype(np.long)
+        return negative_src_node_ids.astype(np.longlong), negative_dst_node_ids.astype(np.longlong)
 
     def reset_random_state(self):
         """

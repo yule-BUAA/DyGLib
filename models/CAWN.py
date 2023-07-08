@@ -142,7 +142,7 @@ class CAWN(nn.Module):
         # add the target node to the list to generate random walks in array-like format
         nodes_neighbor_ids = [node_ids[:, np.newaxis]] + nodes_neighbor_ids
         # follow the CAWN official implementation, the edge ids of the target node is denoted by zeros
-        nodes_edge_ids = [np.zeros((len(node_ids), 1)).astype(np.long)] + nodes_edge_ids
+        nodes_edge_ids = [np.zeros((len(node_ids), 1)).astype(np.longlong)] + nodes_edge_ids
         nodes_neighbor_times = [node_interact_times[:, np.newaxis]] + nodes_neighbor_times
 
         array_format_data_list = []
