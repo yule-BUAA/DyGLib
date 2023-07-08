@@ -223,7 +223,7 @@ class DyGFormer(nn.Module):
         max_seq_length += 1
         if max_seq_length % patch_size != 0:
             max_seq_length += (patch_size - max_seq_length % patch_size)
-        assert max_seq_length % patch_size  == 0
+        assert max_seq_length % patch_size == 0
 
         # pad the sequences
         # three ndarrays with shape (batch_size, max_seq_length)
