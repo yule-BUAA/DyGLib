@@ -181,7 +181,8 @@ def get_node_classification_data(dataset_name: str, val_ratio: float, test_ratio
     :param dataset_name: str, dataset name
     :param val_ratio: float, validation data ratio
     :param test_ratio: float, test data ratio
-    :return:
+    :return: node_raw_features, edge_raw_features, (np.ndarray),
+            full_data, train_data, val_data, test_data, (Data object)
     """
     # Load data and train val test split
     graph_df = pd.read_csv('./processed_data/{}/ml_{}.csv'.format(dataset_name, dataset_name))
