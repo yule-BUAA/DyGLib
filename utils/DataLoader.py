@@ -83,13 +83,13 @@ def get_link_prediction_data(dataset_name: str, val_ratio: float, test_ratio: fl
     assert EDGE_FEAT_DIM >= edge_raw_features.shape[1], f'Edge feature dimension in dataset {dataset_name} is bigger than {EDGE_FEAT_DIM}!'
     # padding the features of edges and nodes to the same dimension (172 for all the datasets)
     if node_raw_features.shape[1] < NODE_FEAT_DIM:
-        node_zero_padding = np.zeros((node_raw_features.shape[0], 172 - node_raw_features.shape[1]))
+        node_zero_padding = np.zeros((node_raw_features.shape[0], NODE_FEAT_DIM - node_raw_features.shape[1]))
         node_raw_features = np.concatenate([node_raw_features, node_zero_padding], axis=1)
     if edge_raw_features.shape[1] < EDGE_FEAT_DIM:
-        edge_zero_padding = np.zeros((edge_raw_features.shape[0], 172 - edge_raw_features.shape[1]))
+        edge_zero_padding = np.zeros((edge_raw_features.shape[0], EDGE_FEAT_DIM - edge_raw_features.shape[1]))
         edge_raw_features = np.concatenate([edge_raw_features, edge_zero_padding], axis=1)
 
-    assert NODE_FEAT_DIM == node_raw_features.shape[1] and EDGE_FEAT_DIM == edge_raw_features.shape[1], "Unaligned feature dimensions after feature padding!"
+    assert NODE_FEAT_DIM == node_raw_features.shape[1] and EDGE_FEAT_DIM == edge_raw_features.shape[1], 'Unaligned feature dimensions after feature padding!'
 
     # get the timestamp of validate and test set
     val_time, test_time = list(np.quantile(graph_df.ts, [(1 - val_ratio - test_ratio), (1 - test_ratio)]))
@@ -193,13 +193,13 @@ def get_node_classification_data(dataset_name: str, val_ratio: float, test_ratio
     assert EDGE_FEAT_DIM >= edge_raw_features.shape[1], f'Edge feature dimension in dataset {dataset_name} is bigger than {EDGE_FEAT_DIM}!'
     # padding the features of edges and nodes to the same dimension (172 for all the datasets)
     if node_raw_features.shape[1] < NODE_FEAT_DIM:
-        node_zero_padding = np.zeros((node_raw_features.shape[0], 172 - node_raw_features.shape[1]))
+        node_zero_padding = np.zeros((node_raw_features.shape[0], NODE_FEAT_DIM - node_raw_features.shape[1]))
         node_raw_features = np.concatenate([node_raw_features, node_zero_padding], axis=1)
     if edge_raw_features.shape[1] < EDGE_FEAT_DIM:
-        edge_zero_padding = np.zeros((edge_raw_features.shape[0], 172 - edge_raw_features.shape[1]))
+        edge_zero_padding = np.zeros((edge_raw_features.shape[0], EDGE_FEAT_DIM - edge_raw_features.shape[1]))
         edge_raw_features = np.concatenate([edge_raw_features, edge_zero_padding], axis=1)
 
-    assert NODE_FEAT_DIM == node_raw_features.shape[1] and EDGE_FEAT_DIM == edge_raw_features.shape[1], "Unaligned feature dimensions after feature padding!"
+    assert NODE_FEAT_DIM == node_raw_features.shape[1] and EDGE_FEAT_DIM == edge_raw_features.shape[1], 'Unaligned feature dimensions after feature padding!'
 
     # get the timestamp of validate and test set
     val_time, test_time = list(np.quantile(graph_df.ts, [(1 - val_ratio - test_ratio), (1 - test_ratio)]))
