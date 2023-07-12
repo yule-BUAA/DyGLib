@@ -139,7 +139,8 @@ if __name__ == "__main__":
                                                                              evaluate_idx_data_loader=val_idx_data_loader,
                                                                              evaluate_data=val_data,
                                                                              loss_func=loss_func,
-                                                                             num_neighbors=args.num_neighbors)
+                                                                             num_neighbors=args.num_neighbors,
+                                                                             time_gap=args.time_gap)
 
         test_total_loss, test_metrics = evaluate_model_node_classification(model_name=args.model_name,
                                                                            model=model,
@@ -147,7 +148,8 @@ if __name__ == "__main__":
                                                                            evaluate_idx_data_loader=test_idx_data_loader,
                                                                            evaluate_data=test_data,
                                                                            loss_func=loss_func,
-                                                                           num_neighbors=args.num_neighbors)
+                                                                           num_neighbors=args.num_neighbors,
+                                                                           time_gap=args.time_gap)
 
         # store the evaluation metrics at the current run
         val_metric_dict, test_metric_dict = {}, {}
