@@ -2,7 +2,8 @@ import random
 import torch
 import torch.nn as nn
 import numpy as np
-import pandas as pd
+
+from utils.DataLoader import Data
 
 
 def set_random_seed(seed: int = 0):
@@ -279,10 +280,10 @@ class NeighborSampler:
         self.random_state = np.random.RandomState(self.seed)
 
 
-def get_neighbor_sampler(data: pd.DataFrame, sample_neighbor_strategy: str = 'uniform', time_scaling_factor: float = 0.0, seed: int = None):
+def get_neighbor_sampler(data: Data, sample_neighbor_strategy: str = 'uniform', time_scaling_factor: float = 0.0, seed: int = None):
     """
     get neighbor sampler
-    :param data: DataFrame
+    :param data: Data
     :param sample_neighbor_strategy: str, how to sample historical neighbors, 'uniform', 'recent', or 'time_interval_aware''
     :param time_scaling_factor: float, a hyper-parameter that controls the sampling preference with time interval,
     a large time_scaling_factor tends to sample more on recent links, this parameter works when sample_neighbor_strategy == 'time_interval_aware'
