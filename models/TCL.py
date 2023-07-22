@@ -143,6 +143,8 @@ class TCL(nn.Module):
             dst_node_embeddings = transformer(inputs_query=dst_node_features, inputs_key=src_node_features,
                                               inputs_value=src_node_features, neighbor_masks=src_neighbor_node_ids)
 
+            src_node_features, dst_node_features = src_node_embeddings, dst_node_embeddings
+
         # retrieve the embedding of the corresponding target node, which is at the first position of the sequence
         # Tensor, shape (batch_size, node_feat_dim)
         src_node_embeddings = self.output_layer(src_node_embeddings[:, 0, :])
