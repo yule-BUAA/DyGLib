@@ -553,7 +553,7 @@ class GraphAttentionEmbedding(nn.Module):
         """
         Graph attention embedding module.
         :param node_raw_features: Tensor, shape (num_nodes + 1, node_feat_dim)
-        :param edge_raw_features: Tensor, shape (num_edges + 1, node_feat_dim)
+        :param edge_raw_features: Tensor, shape (num_edges + 1, edge_feat_dim)
         :param neighbor_sampler: NeighborSampler, neighbor sampler
         :param time_encoder: TimeEncoder
         :param node_feat_dim: int, dimension of node features
