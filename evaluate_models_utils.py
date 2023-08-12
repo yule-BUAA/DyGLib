@@ -47,6 +47,7 @@ def evaluate_model_link_prediction(model_name: str, model: nn.Module, neighbor_s
         evaluate_losses, evaluate_metrics = [], []
         evaluate_idx_data_loader_tqdm = tqdm(evaluate_idx_data_loader, ncols=120)
         for batch_idx, evaluate_data_indices in enumerate(evaluate_idx_data_loader_tqdm):
+            evaluate_data_indices = evaluate_data_indices.numpy()
             batch_src_node_ids, batch_dst_node_ids, batch_node_interact_times, batch_edge_ids = \
                 evaluate_data.src_node_ids[evaluate_data_indices],  evaluate_data.dst_node_ids[evaluate_data_indices], \
                 evaluate_data.node_interact_times[evaluate_data_indices], evaluate_data.edge_ids[evaluate_data_indices]
@@ -178,6 +179,7 @@ def evaluate_model_node_classification(model_name: str, model: nn.Module, neighb
         evaluate_total_loss, evaluate_y_trues, evaluate_y_predicts = 0.0, [], []
         evaluate_idx_data_loader_tqdm = tqdm(evaluate_idx_data_loader, ncols=120)
         for batch_idx, evaluate_data_indices in enumerate(evaluate_idx_data_loader_tqdm):
+            evaluate_data_indices = evaluate_data_indices.numpy()
             batch_src_node_ids, batch_dst_node_ids, batch_node_interact_times, batch_edge_ids, batch_labels = \
                 evaluate_data.src_node_ids[evaluate_data_indices],  evaluate_data.dst_node_ids[evaluate_data_indices], \
                 evaluate_data.node_interact_times[evaluate_data_indices], evaluate_data.edge_ids[evaluate_data_indices], evaluate_data.labels[evaluate_data_indices]
@@ -305,6 +307,7 @@ def evaluate_edge_bank_link_prediction(args: argparse.Namespace, train_data: Dat
         test_idx_data_loader_tqdm = tqdm(test_idx_data_loader, ncols=120)
 
         for batch_idx, test_data_indices in enumerate(test_idx_data_loader_tqdm):
+            test_data_indices = test_data_indices.numpy()
             batch_src_node_ids, batch_dst_node_ids, batch_node_interact_times = \
                 test_data.src_node_ids[test_data_indices], test_data.dst_node_ids[test_data_indices], \
                 test_data.node_interact_times[test_data_indices]
