@@ -12,7 +12,7 @@ def get_link_prediction_args(is_evaluation: bool = False):
     # arguments
     parser = argparse.ArgumentParser('Interface for the link prediction task')
     parser.add_argument('--dataset_name', type=str, help='dataset to be used', default='wikipedia',
-                        choices=['wikipedia', 'reddit', 'mooc', 'lastfm', 'enron', 'SocialEvo', 'uci', 'Flights', 'CanParl', 'USLegis', 'UNtrade', 'UNvote', 'Contacts'])
+                        choices=['wikipedia', 'reddit', 'mooc', 'lastfm', 'myket', 'enron', 'SocialEvo', 'uci', 'Flights', 'CanParl', 'USLegis', 'UNtrade', 'UNvote', 'Contacts'])
     parser.add_argument('--batch_size', type=int, default=200, help='batch size')
     parser.add_argument('--model_name', type=str, default='DyGFormer', help='name of the model, note that EdgeBank is only applicable for evaluation',
                         choices=['JODIE', 'DyRep', 'TGAT', 'TGN', 'CAWN', 'EdgeBank', 'TCL', 'GraphMixer', 'DyGFormer'])
@@ -163,7 +163,7 @@ def load_link_prediction_best_configs(args: argparse.Namespace):
                 args.edge_bank_memory_mode = 'time_window_memory'
                 args.time_window_mode = 'repeat_interval'
             else:
-                assert args.dataset_name in ['wikipedia', 'reddit', 'mooc', 'lastfm', 'enron',
+                assert args.dataset_name in ['wikipedia', 'reddit', 'mooc', 'lastfm', 'myket', 'enron',
                                              'SocialEvo', 'Flights', 'CanParl', 'UNtrade', 'Contacts']
                 args.edge_bank_memory_mode = 'repeat_threshold_memory'
     elif args.model_name == 'TCL':

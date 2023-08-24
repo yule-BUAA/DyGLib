@@ -1,7 +1,7 @@
 import numpy as np
 
 if __name__ == "__main__":
-    for dataset_name in ['wikipedia', 'reddit', 'mooc', 'lastfm', 'enron', 'SocialEvo', 'uci',
+    for dataset_name in ['wikipedia', 'reddit', 'mooc', 'lastfm', 'myket', 'enron', 'SocialEvo', 'uci',
                          'Flights', 'CanParl', 'USLegis', 'UNtrade', 'UNvote', 'Contacts']:
         edge_raw_features = np.load('../processed_data/{}/ml_{}.npy'.format(dataset_name, dataset_name))
         node_raw_features = np.load('../processed_data/{}/ml_{}_node.npy'.format(dataset_name, dataset_name))
