@@ -151,7 +151,7 @@ def check_data(dataset_name: str):
 
 
 parser = argparse.ArgumentParser('Interface for preprocessing datasets')
-parser.add_argument('--dataset_name', type=str, choices=['wikipedia', 'reddit', 'mooc', 'lastfm', 'enron', 'SocialEvo', 'uci',
+parser.add_argument('--dataset_name', type=str, choices=['wikipedia', 'reddit', 'mooc', 'lastfm', 'myket', 'enron', 'SocialEvo', 'uci',
                                                          'Flights', 'CanParl', 'USLegis', 'UNtrade', 'UNvote', 'Contacts'],
                     help='Dataset name', default='wikipedia')
 parser.add_argument('--node_feat_dim', type=int, default=172, help='Number of node raw features')
@@ -165,7 +165,7 @@ if args.dataset_name in ['enron', 'SocialEvo', 'uci']:
     print(f'the original dataset of {args.dataset_name} is unavailable, directly use the processed dataset by previous works.')
 else:
     # bipartite dataset
-    if args.dataset_name in ['wikipedia', 'reddit', 'mooc', 'lastfm']:
+    if args.dataset_name in ['wikipedia', 'reddit', 'mooc', 'lastfm', 'myket']:
         preprocess_data(dataset_name=args.dataset_name, bipartite=True, node_feat_dim=args.node_feat_dim)
     else:
         preprocess_data(dataset_name=args.dataset_name, bipartite=False, node_feat_dim=args.node_feat_dim)

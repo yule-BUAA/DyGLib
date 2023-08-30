@@ -8,9 +8,10 @@ which aims to promote standard, scalable, and reproducible dynamic graph learnin
 
 
 ## Benchmark Datasets and Preprocessing
-Thirteen datasets are used in DyGLib, including Wikipedia, Reddit, MOOC, LastFM, Enron, Social Evo., UCI, Flights, Can. Parl., 
-US Legis., UN Trade, UN Vote, and Contact. The first four datasets are bipartite, and the others only contain nodes with a single type.
-All the used original dynamic graph datasets come from [Towards Better Evaluation for Dynamic Link Prediction](https://openreview.net/forum?id=1GVpwr2Tfdg), 
+Fourteen datasets are used in DyGLib, including Wikipedia, Reddit, MOOC, LastFM, Myket, Enron, Social Evo., UCI, Flights, Can. Parl., 
+US Legis., UN Trade, UN Vote, and Contact. The first five datasets are bipartite, and the others only contain nodes with a single type.
+
+Most of the used original dynamic graph datasets come from [Towards Better Evaluation for Dynamic Link Prediction](https://openreview.net/forum?id=1GVpwr2Tfdg), 
 which can be downloaded [here](https://zenodo.org/record/7213796#.Y1cO6y8r30o). 
 Please first download them and put them in ```DG_data``` folder. 
 Then, please run ```preprocess_data/preprocess_data.py``` for pre-processing the datasets.
@@ -20,6 +21,7 @@ cd preprocess_data/
 python preprocess_data.py  --dataset_name wikipedia
 ```
 
+The Myket dataset comes from [Effect of Choosing Loss Function when Using T-batching for Representation Learning on Dynamic Networks](https://arxiv.org/abs/2308.06862) and can be accessed from [here](https://github.com/erfanloghmani/myket-android-application-market-dataset). The preprocessed files for this dataset are included in the repository and are located at `processed_data/myket`.
 
 ## Dynamic Graph Learning Models
 Eight popular continuous-time dynamic graph learning methods are included in DyGLib, including 
