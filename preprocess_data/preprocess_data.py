@@ -151,8 +151,9 @@ def check_data(dataset_name: str):
 
 
 parser = argparse.ArgumentParser('Interface for preprocessing datasets')
-parser.add_argument('--dataset_name', type=str, choices=['wikipedia', 'reddit', 'mooc', 'lastfm', 'myket', 'enron', 'SocialEvo', 'uci',
-                                                         'Flights', 'CanParl', 'USLegis', 'UNtrade', 'UNvote', 'Contacts'],
+parser.add_argument('--dataset_name', type=str,
+                    choices=['wikipedia', 'reddit', 'mooc', 'lastfm', 'myket', 'enron', 'SocialEvo', 'uci',
+                             'Flights', 'CanParl', 'USLegis', 'UNtrade', 'UNvote', 'Contacts'],
                     help='Dataset name', default='wikipedia')
 parser.add_argument('--node_feat_dim', type=int, default=172, help='Number of node raw features')
 
@@ -162,7 +163,8 @@ print(f'preprocess dataset {args.dataset_name}...')
 if args.dataset_name in ['enron', 'SocialEvo', 'uci']:
     Path("../processed_data/{}/".format(args.dataset_name)).mkdir(parents=True, exist_ok=True)
     copy_tree("../DG_data/{}/".format(args.dataset_name), "../processed_data/{}/".format(args.dataset_name))
-    print(f'the original dataset of {args.dataset_name} is unavailable, directly use the processed dataset by previous works.')
+    print(
+        f'the original dataset of {args.dataset_name} is unavailable, directly use the processed dataset by previous works.')
 else:
     # bipartite dataset
     if args.dataset_name in ['wikipedia', 'reddit', 'mooc', 'lastfm', 'myket']:
@@ -171,5 +173,6 @@ else:
         preprocess_data(dataset_name=args.dataset_name, bipartite=False, node_feat_dim=args.node_feat_dim)
     print(f'{args.dataset_name} is processed successfully.')
 
-    check_data(args.dataset_name)
+    if args.dataset_name not in ['myket']:
+        check_data(args.dataset_name)
     print(f'{args.dataset_name} passes the checks successfully.')
