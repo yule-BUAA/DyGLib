@@ -40,7 +40,7 @@ Eight popular continuous-time dynamic graph learning methods are included in DyG
 [EdgeBank](https://openreview.net/forum?id=1GVpwr2Tfdg), 
 [TCL](https://arxiv.org/abs/2105.07944), and 
 [GraphMixer](https://openreview.net/forum?id=ayPPc0SyLv1).
-Our recent work [DyGFormer](http://arxiv.org/abs/2303.13047) is also integrated into DyGLib, which can explore the correlations of the source node and destination node by a neighbor co-occurrence encoding scheme, and
+Our recent work [DyGFormer](https://arxiv.org/abs/2303.13047) is also integrated into DyGLib, which can explore the correlations of the source node and destination node by a neighbor co-occurrence encoding scheme, and
 effectively and efficiently benefit from longer histories via a patching technique.
 ![](figures/DyGFormer_framework.jpg)
 
@@ -61,8 +61,9 @@ New datasets and new models are welcomed to be incorporated into DyGLib by pull 
 ## Environments
 [PyTorch 1.8.1](https://pytorch.org/), 
 [numpy](https://github.com/numpy/numpy),
-[pandas](https://github.com/pandas-dev/pandas), and
-[tqdm](https://github.com/tqdm/tqdm)
+[pandas](https://github.com/pandas-dev/pandas),
+[tqdm](https://github.com/tqdm/tqdm), and 
+[tabulate](https://github.com/astanin/python-tabulate)
 
 
 ## Executing Scripts
