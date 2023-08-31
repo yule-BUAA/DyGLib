@@ -13,15 +13,22 @@ US Legis., UN Trade, UN Vote, and Contact. The first five datasets are bipartite
 
 Most of the used original dynamic graph datasets come from [Towards Better Evaluation for Dynamic Link Prediction](https://openreview.net/forum?id=1GVpwr2Tfdg), 
 which can be downloaded [here](https://zenodo.org/record/7213796#.Y1cO6y8r30o). 
-Please first download them and put them in ```DG_data``` folder. 
-Then, please run ```preprocess_data/preprocess_data.py``` for pre-processing the datasets.
+Please download them and put them in ```DG_data``` folder. 
+The Myket dataset comes from [Effect of Choosing Loss Function when Using T-batching for Representation Learning on Dynamic Networks](https://arxiv.org/abs/2308.06862) and 
+can be accessed from [here](https://github.com/erfanloghmani/myket-android-application-market-dataset). 
+The original and preprocessed files for Myket dataset are included in this repository.
+
+We can run ```preprocess_data/preprocess_data.py``` for pre-processing the datasets.
 For example, to preprocess the *Wikipedia* dataset, we can run the following commands:
 ```{bash}
 cd preprocess_data/
 python preprocess_data.py  --dataset_name wikipedia
 ```
-
-The Myket dataset comes from [Effect of Choosing Loss Function when Using T-batching for Representation Learning on Dynamic Networks](https://arxiv.org/abs/2308.06862) and can be accessed from [here](https://github.com/erfanloghmani/myket-android-application-market-dataset). The preprocessed files for this dataset are included in the repository and are located at `processed_data/myket`.
+We can also run the following commands to preprocess all the original datasets at once:
+```{bash}
+cd preprocess_data/
+python preprocess_all_data.py
+```
 
 ## Dynamic Graph Learning Models
 Eight popular continuous-time dynamic graph learning methods are included in DyGLib, including 

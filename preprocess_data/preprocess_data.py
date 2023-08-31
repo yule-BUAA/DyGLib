@@ -163,8 +163,7 @@ print(f'preprocess dataset {args.dataset_name}...')
 if args.dataset_name in ['enron', 'SocialEvo', 'uci']:
     Path("../processed_data/{}/".format(args.dataset_name)).mkdir(parents=True, exist_ok=True)
     copy_tree("../DG_data/{}/".format(args.dataset_name), "../processed_data/{}/".format(args.dataset_name))
-    print(
-        f'the original dataset of {args.dataset_name} is unavailable, directly use the processed dataset by previous works.')
+    print(f'the original dataset of {args.dataset_name} is unavailable, directly use the processed dataset by previous works.')
 else:
     # bipartite dataset
     if args.dataset_name in ['wikipedia', 'reddit', 'mooc', 'lastfm', 'myket']:
