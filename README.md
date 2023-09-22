@@ -1,13 +1,24 @@
 # Towards Better Dynamic Graph Learning: New Architecture and Unified Library
+This repository is built for the Paper [Towards Better Dynamic Graph Learning: New Architecture and Unified Library](https://arxiv.org/abs/2303.13047).
 
+🔔 If you have any questions or suggestions, please feel free to let us know. 
+You can directly email [Le Yu](https://yule-buaa.github.io/) using the email address yule@buaa.edu.cn or post an issue on this repository.
+
+## 💥 News 💥
+
+- 🔥🔥🔥[2023/09] Our paper is accepted by **NeurIPS 2023 (Poster)**. The camera ready version is coming soon.
+- 🔥🔥🔥[2023/09] DyGFormer is evaluated on [TGB Leaderboards](https://tgb.complexdatalab.com) and it currently **ranks first** on tgbl-wiki-v2 and tgbl-coin. 
+  It also performs good on other datasets. See our other repository [DyGLib_TGB](https://github.com/yule-BUAA/DyGLib_TGB) for more details.
 
 ## Overview
+
 Dynamic Graph Library (DyGLib) is an open-source toolkit with standard training pipelines, extensible coding interfaces, and comprehensive evaluating strategies, 
 which aims to promote standard, scalable, and reproducible dynamic graph learning research. Diverse benchmark datasets and thorough baselines are involved in DyGLib.
 ![](figures/DyGLib_procedure.jpg)
 
 
 ## Benchmark Datasets and Preprocessing
+
 Fourteen datasets are used in DyGLib, including Wikipedia, Reddit, MOOC, LastFM, Myket, Enron, Social Evo., UCI, Flights, Can. Parl., 
 US Legis., UN Trade, UN Vote, and Contact. The first five datasets are bipartite, and the others only contain nodes with a single type.
 
@@ -31,6 +42,7 @@ python preprocess_all_data.py
 ```
 
 ## Dynamic Graph Learning Models
+
 Eight popular continuous-time dynamic graph learning methods are included in DyGLib, including 
 [JODIE](https://dl.acm.org/doi/10.1145/3292500.3330895), 
 [DyRep](https://openreview.net/forum?id=HyePrhR5KX), 
@@ -46,11 +58,13 @@ effectively and efficiently benefit from longer histories via a patching techniq
 
 
 ## Evaluation Tasks
+
 DyGLib supports dynamic link prediction under both transductive and inductive settings with three (i.e., random, historical, and inductive) negative sampling strategies,
 as well as dynamic node classification.
 
 
 ## Incorporate New Datasets or New Models
+
 New datasets and new models are welcomed to be incorporated into DyGLib by pull requests.
 * For new datasets: The format of new datasets should satisfy the requirements in ```DG_data/DATASETS_README.md```. 
   Users can put the new datasets in ```DG_data``` folder, and then run ```preprocess_data/preprocess_data.py``` to get the processed datasets.
@@ -59,6 +73,7 @@ New datasets and new models are welcomed to be incorporated into DyGLib by pull 
 
 
 ## Environments
+
 [PyTorch 1.8.1](https://pytorch.org/), 
 [numpy](https://github.com/numpy/numpy),
 [pandas](https://github.com/pandas-dev/pandas),
@@ -67,6 +82,7 @@ New datasets and new models are welcomed to be incorporated into DyGLib by pull 
 
 
 ## Executing Scripts
+
 ### Scripts for Dynamic Link Prediction
 Dynamic link prediction could be performed on all the thirteen datasets. 
 If you want to load the best model configurations determined by the grid search, please set the *load_best_configs* argument to True.
@@ -113,6 +129,7 @@ python evaluate_node_classification.py --dataset_name wikipedia --model_name DyG
 
 
 ## Acknowledgments
+
 We are grateful to the authors of 
 [TGAT](https://github.com/StatsDLMathsRecomSys/Inductive-representation-learning-on-temporal-graphs), 
 [TGN](https://github.com/twitter-research/tgn), 
@@ -122,6 +139,7 @@ We are grateful to the authors of
 
 
 ## Citation
+
 Please consider citing our paper when using this project.
 ```{bibtex}
 @article{yu2023towards,
