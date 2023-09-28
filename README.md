@@ -1,5 +1,5 @@
 # Towards Better Dynamic Graph Learning: New Architecture and Unified Library
-This repository is built for the Paper [Towards Better Dynamic Graph Learning: New Architecture and Unified Library](https://arxiv.org/abs/2303.13047).
+This repository is built for the paper [Towards Better Dynamic Graph Learning: New Architecture and Unified Library](https://arxiv.org/abs/2303.13047).
 
 🔔 If you have any questions or suggestions, please feel free to let us know. 
 You can directly email [Le Yu](https://yule-buaa.github.io/) using the email address yule@buaa.edu.cn or post an issue on this repository.
@@ -74,7 +74,7 @@ New datasets and new models are welcomed to be incorporated into DyGLib by pull 
 
 ## Environments
 
-[PyTorch 1.8.1](https://pytorch.org/), 
+[PyTorch 1.8.1](https://pytorch.org/),
 [numpy](https://github.com/numpy/numpy),
 [pandas](https://github.com/pandas-dev/pandas),
 [tqdm](https://github.com/tqdm/tqdm), and 
@@ -145,7 +145,7 @@ Please consider citing our paper when using this project.
 @article{yu2023towards,
   title={Towards Better Dynamic Graph Learning: New Architecture and Unified Library},
   author={Yu, Le and Sun, Leilei and Du, Bowen and Lv, Weifeng},
-  journal={arXiv preprint arXiv:2303.13047},
+  journal={Advances in Neural Information Processing Systems},
   year={2023}
 }
 ```
