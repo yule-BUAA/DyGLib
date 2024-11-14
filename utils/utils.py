@@ -169,8 +169,14 @@ class NeighborSampler:
         # extracts all neighbors ids, edge ids and interaction times of nodes in node_ids, which happened before the corresponding time in node_interact_times
         for idx, (node_id, node_interact_time) in enumerate(zip(node_ids, node_interact_times)):
             # find neighbors that interacted with node_id before time node_interact_time
-            node_neighbor_ids, node_edge_ids, node_neighbor_times, node_neighbor_sampled_probabilities = \
-                self.find_neighbors_before(node_id=node_id, interact_time=node_interact_time, return_sampled_probabilities=self.sample_neighbor_strategy == 'time_interval_aware')
+            if node_id >= len(self.nodes_neighbor_ids):
+                node_neighbor_ids = np.empty(0)
+                node_edge_ids = np.empty_like(node_neighbor_ids)
+                node_neighbor_times = np.empty_like(node_neighbor_ids)
+                node_neighbor_sampled_probabilities = np.empty_like(node_neighbor_ids)
+            else:
+                node_neighbor_ids, node_edge_ids, node_neighbor_times, node_neighbor_sampled_probabilities = \
+                    self.find_neighbors_before(node_id=node_id, interact_time=node_interact_time, return_sampled_probabilities=self.sample_neighbor_strategy == 'time_interval_aware')
 
             if len(node_neighbor_ids) > 0:
                 if self.sample_neighbor_strategy in ['uniform', 'time_interval_aware']:
