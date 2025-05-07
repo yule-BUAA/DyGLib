@@ -38,12 +38,12 @@ class EarlyStopping(object):
             metric_name, metric_value, higher_better = metric_tuple[0], metric_tuple[1], metric_tuple[2]
 
             if higher_better:
-                if self.best_metrics.get(metric_name) is None or metric_value >= self.best_metrics.get(metric_name):
+                if self.best_metrics.get(metric_name) is None or metric_value > self.best_metrics.get(metric_name):
                     metrics_compare_results.append(True)
                 else:
                     metrics_compare_results.append(False)
             else:
-                if self.best_metrics.get(metric_name) is None or metric_value <= self.best_metrics.get(metric_name):
+                if self.best_metrics.get(metric_name) is None or metric_value < self.best_metrics.get(metric_name):
                     metrics_compare_results.append(True)
                 else:
                     metrics_compare_results.append(False)
