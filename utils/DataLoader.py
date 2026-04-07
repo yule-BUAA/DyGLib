@@ -64,12 +64,13 @@ class Data:
         self.num_unique_nodes = len(self.unique_node_ids)
 
 
-def get_link_prediction_data(dataset_name: str, val_ratio: float, test_ratio: float):
+def get_link_prediction_data(dataset_name: str, val_ratio: float, test_ratio: float, train_mode: str = 'full'):
     """
     generate data for link prediction task (inductive & transductive settings)
     :param dataset_name: str, dataset name
     :param val_ratio: float, validation data ratio
     :param test_ratio: float, test data ratio
+    :param train_mode: str, train data mode: 'full', 'random_10', or 'compressed_10'
     :return: node_raw_features, edge_raw_features, (np.ndarray),
             full_data, train_data, val_data, test_data, new_node_val_data, new_node_test_data, (Data object)
     """
@@ -112,7 +113,7 @@ def get_link_prediction_data(dataset_name: str, val_ratio: float, test_ratio: fl
     # compute nodes which appear at test time
     test_node_set = set(src_node_ids[node_interact_times > val_time]).union(set(dst_node_ids[node_interact_times > val_time]))
     # sample nodes which we keep as new nodes (to test inductiveness), so then we have to remove all their edges from training
-    new_test_node_set = set(random.sample(test_node_set, int(0.1 * num_total_unique_node_ids)))
+    new_test_node_set = set(random.sample(list(test_node_set), int(0.1 * num_total_unique_node_ids)))
 
     # mask for each source and destination to denote whether they are new test nodes
     new_test_source_mask = graph_df.u.map(lambda x: x in new_test_node_set).values
@@ -127,6 +128,17 @@ def get_link_prediction_data(dataset_name: str, val_ratio: float, test_ratio: fl
     train_data = Data(src_node_ids=src_node_ids[train_mask], dst_node_ids=dst_node_ids[train_mask],
                       node_interact_times=node_interact_times[train_mask],
                       edge_ids=edge_ids[train_mask], labels=labels[train_mask])
+
+    # Apply compression/sampling to train_data if specified
+    if train_mode == 'random_10':
+        print(f"Applying random 10% sampling to training data...")
+        from utils.compression import random_compress_data
+        train_data = random_compress_data(train_data, ratio=0.1, seed=42)
+    elif train_mode == 'compressed_10':
+        print(f"Applying binary search window compression (10%) to training data...")
+        from utils.compression import binary_search_window_compress_data
+        train_data = binary_search_window_compress_data(train_data, ratio=0.1, tol=0.02, seed=42,
+                                                         edge_features=edge_raw_features)
 
     # define the new nodes sets for testing inductiveness of the model
     train_node_set = set(train_data.src_node_ids).union(train_data.dst_node_ids)

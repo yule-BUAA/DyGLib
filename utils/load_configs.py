@@ -49,6 +49,8 @@ def get_link_prediction_args(is_evaluation: bool = False):
     parser.add_argument('--negative_sample_strategy', type=str, default='random', choices=['random', 'historical', 'inductive'],
                         help='strategy for the negative edge sampling')
     parser.add_argument('--load_best_configs', action='store_true', default=False, help='whether to load the best configurations')
+    parser.add_argument('--train_mode', type=str, default='full', choices=['full', 'random_10', 'compressed_10'],
+                        help='training data mode: full (use all training data), random_10 (random 10%% sample), compressed_10 (binary search window compressed 10%%)')
 
     try:
         args = parser.parse_args()
